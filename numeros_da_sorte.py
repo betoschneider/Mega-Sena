@@ -1,26 +1,38 @@
+'''
+script para gerar números aleatórios
+agrupados em jogos de loteria
+'''
 
-class numero_da_sorte():
-    def __init__(self):
-        pass
-    def gerar(self, qtd_jogos, qtd_dezendas=6):
-        import numpy as np
-        def numero_magico():
-            return np.random.randint(1, 61)
-        for i in range(qtd_jogos):
-            jogo = [numero_magico()]
+def gerar(qtd_jogos, qtd_dezendas=6, dezena_max=60):
+    '''
+    qtd_jogos: int, número de jogos a serem gerados
+    qtd_dezenas: int, quantidade de jogos a comporem cada jogo, padrão 6
+    dezena_max: int, limite escolha do número aleatório, padrão 60
+    '''
+    import numpy as np
 
-            for j in range(qtd_dezendas - 1):
-                  chave = True
-                  while chave:
-                      novo_num = numero_magico()
-                      if novo_num not in jogo:
-                          jogo.append(novo_num)
-                          chave = False
+    #gera o número aleatório da loteria
+    def numero_magico():
+        return np.random.randint(1, dezena_max + 1)
+    
+    #laço para criar a qtd de jogos 
+    for i in range(qtd_jogos):
+        jogo = [numero_magico()]
 
-            print(np.sort(jogo))
+        #laço para adicionar as dezenas restantes
+        for j in range(qtd_dezendas - 1):
+                valida = True
+                while valida:
+                    novo_num = numero_magico()
+
+                    #adiciona ao jogo se novo número não estiver lá
+                    if novo_num not in jogo:
+                        jogo.append(novo_num)
+                        valida = False
+
+        print(np.sort(jogo))
             
 
 if __name__ == '__main__':
-    n = numero_da_sorte()
-    n.gerar(2)
+    gerar(2)
 
