@@ -3,7 +3,7 @@ script para gerar números aleatórios
 agrupados em jogos de loteria
 '''
 
-def gerar(qtd_jogos, qtd_dezendas=6, dezena_max=60):
+def numeros_da_sorte(qtd_jogos, qtd_dezendas=6, dezena_max=60):
     '''
     qtd_jogos: int, número de jogos a serem gerados
     qtd_dezenas: int, quantidade de jogos a comporem cada jogo, padrão 6
@@ -31,8 +31,7 @@ def gerar(qtd_jogos, qtd_dezendas=6, dezena_max=60):
                         valida = False
 
         print(np.sort(jogo))
-            
 
 if __name__ == '__main__':
-    gerar(2)
+    numeros_da_sorte(2)
 
